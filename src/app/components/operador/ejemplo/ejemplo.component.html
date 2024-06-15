@@ -1,0 +1,104 @@
+<div [formGroup]="addForm">
+  <div class="table-responsive">
+    <table class="table table-hover b-1 no-wrap w-100 rounded">
+      <thead>
+        <tr>
+          <th class="p-16">#</th>
+          <th class="p-16">Item Name</th>
+          <th class="p-16">Unit Price</th>
+          <th class="p-16">Units</th>
+          <th class="p-16">Unit Total Price</th>
+          <th class="p-16"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(row of addForm.get('rows')['controls']; track row; let index = $index) {
+        <tr>
+          <td class="p-16">
+            {{ index + 1 }}
+          </td>
+
+          <td class="p-16">
+            <mat-form-field appearance="outline" class="w-100 hide-hint">
+              <input
+                type="text"
+                matInput
+                class="form-control"
+                [formControl]="row.get('itemName')"
+                (input)="itemsChanged()"
+              />
+            </mat-form-field>
+          </td>
+
+          <td class="p-16">
+            <mat-form-field appearance="outline" class="w-100 hide-hint">
+              <input
+                type="number"
+                matInput
+                class="form-control"
+                min="1"
+                [formControl]="row.get('unitPrice')"
+                (input)="itemsChanged()"
+              />
+            </mat-form-field>
+          </td>
+
+          <td class="p-16">
+            <mat-form-field appearance="outline" class="w-100 hide-hint">
+              <input
+                type="number"
+                matInput
+                class="form-control"
+                min="1"
+                [formControl]="row.get('units')"
+                (input)="itemsChanged()"
+              />
+            </mat-form-field>
+          </td>
+
+          <td class="p-16">
+            <mat-form-field appearance="outline" class="w-100 hide-hint">
+              <input
+                [disabled]="true"
+                matInput
+                matInput
+                class="form-control"
+                [formControl]="row.get('itemTotal')"
+                [value]="
+                  row.get('unitPrice').value * row.get('units').value
+                "
+              />
+            </mat-form-field>
+          </td>
+
+          <td>
+            @if(index > 0) {
+            <button
+              color="warn"
+              mat-icon-button
+              (click)="onRemoveRow(index)"
+              class="d-flex justify-content-center"
+            >
+              <i-tabler name="trash" class="icon-18 d-flex"></i-tabler>
+            </button>
+            }
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-right m-t-30">
+    @if(addForm.get('rows')) {
+    <button
+      color="primary"
+      mat-flat-button
+      (click)="onAddRow()"
+      [disabled]="addForm.invalid"
+    >
+      Add row
+    </button>
+    }
+  </div>
+</div>

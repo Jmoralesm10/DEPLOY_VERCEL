@@ -1,0 +1,39 @@
+/* Formulario-Reportes.component.css */
+
+.container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.persona-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.persona-table th,
+.persona-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.persona-table th {
+  background-color: #f7f7f7;
+  font-weight: bold;
+}
+
+.persona-table tbody tr:hover {
+  background-color: #f4f4f4;
+}
+
+.persona-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.persona-table tbody td {
+  border-bottom: 1px solid #ddd;
+}
+
+.persona-table tbody td:last-child {
+  border-bottom: none;
+}

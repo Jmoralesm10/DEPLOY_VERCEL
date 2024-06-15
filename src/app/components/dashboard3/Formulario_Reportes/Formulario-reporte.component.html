@@ -1,0 +1,60 @@
+
+<div class="container">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Carnet</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Cargo</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (persona of personal; track persona.Carnet) {
+        <tr>
+          <td>{{ persona.Carnet }}</td>
+          <td>{{ persona.Nombre }}</td>
+          <td>{{ persona.Apellido }}</td>
+          <td>{{ persona.cargo }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Codigo Servicio</th>
+        <th>Descripcion</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (services of servicio; track services.Cod_servicio) {
+        <tr>
+          <td>{{ services.Cod_servicio }}</td>
+          <td>{{ services.Descripcion_Servicio }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Carnet</th>
+        <th>Nombre</th>
+        <th>Cargo</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (pilot of piloto; track pilot.Carnet) {
+        <tr>
+          <td>{{ pilot.Carnet }}</td>
+          <td>{{ pilot.Nombre }}</td>
+          <td>{{ pilot.cargo }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
